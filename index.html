@@ -9,7 +9,36 @@
 </head>
 <body>
   
-
+  <div class="container">
+    <div class="container-50">
+      <div class="form-container">
+        <h1 class="header">Add todo to list</h1>
+        <form id="form" class="form-flex">
+          <input type="text" id="addTodo-title" class="form-control" placeholder="Title">
+          <input type="text" id="addTodo-text" class="form-control" placeholder="Description">
+          <button class="btn btn-primary btn-fill" id="btn-add">ADD TO LIST</button>
+        </form>
+      </div>
+    </div>
+    <div class="container-50">
+      <div class="item-container">
+        <div class="list-header">
+          <h1 class="list-header-center">Todo List</h1>
+          <h1 class="list-header-end" id="list-counter">0/10</h1>
+        </div>
+        <div class="item-card">
+          <div>
+            <h2>Todo title</h2>
+            <p>Todo text</p>
+          </div>
+          <div class="check-container">
+            <input type="checkbox" id="item-check">
+            <button class="btn btn-primary btn-list" id="btn-remove">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 
 
 

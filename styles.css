@@ -1,0 +1,115 @@
+:root {
+  --primary-color: #1b153f;
+  --secondary-color: #e9967a;
+  --header-color: #daa520;
+  --card-color: #ddba8d;
+  --card-color-finished: #8fbc8f;
+  --border-radius: .5rem;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html, body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+.btn {
+  padding: .5em 1em;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+}
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #fff;
+}
+.btn-fill {
+  width: 80%;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 0 0 .5rem .5rem;
+}
+.btn-list {
+  visibility: hidden;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  display: flex;
+}
+.container-50 {
+  width: 50%;
+  height: 100%;
+  min-height: 100vh;
+  background-color: var(--primary-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-container {
+  width: 50%;
+  height: 30%;
+  text-align: center;
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
+}
+.header {
+  padding-block: 2rem;
+  background-color: var(--header-color);
+  border-radius: .5rem .5rem 0 0;
+}
+.form-flex {
+  margin-block: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form-control {
+  width: 80%;
+  padding: .5rem 1rem;
+}
+.item-container {
+  width: 80%;
+  height: 95%;
+  background-color: var(--secondary-color);
+  border-radius: var(--border-radius);
+}
+.list-header {
+  padding-block: 2rem;
+  background-color: var(--header-color);
+  display: flex;
+  justify-content: flex-end;
+  border-radius: .5rem .5rem 0 0;
+}
+.list-header-center{
+  margin-right: 11rem;
+}
+.list-header-end {
+  margin-right: 2rem;
+}
+.item-card {
+  margin: 1.3rem;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 5px 5px 10px rgba(51, 51, 51, 0.041);
+  border: 1px solid rgba(51, 51, 51, 0.089);
+  border-radius: var(--border-radius);
+  background-color: var(--card-color);
+}
+.item-card-finished {
+  background-color: var(--card-color-finished);
+}
+.check-container {
+  margin-left: 1rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.check-container button {
+  margin-left: .5rem;
+}
