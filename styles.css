@@ -33,6 +33,9 @@ html, body {
 .btn-list {
   visibility: hidden;
 }
+.checkbox-checked {
+  visibility: visible;
+}
 .container {
   width: 100%;
   height: 100%;

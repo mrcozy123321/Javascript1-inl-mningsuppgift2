@@ -1,11 +1,10 @@
 const form = document.querySelector('#form');
-const addTodoTitle = document.querySelector('#addTodo-title');
-const addTodoText = document.querySelector('#addTodo-body');
-const cardCheck = document.querySelector('#item-check');
-const removeBtn = document.querySelector('#btn-remove');
+const input = document.querySelector('#todoInput');
+const cardCheck = document.querySelector('.item-check');
 const addBtn = document.querySelector('#btn-add');
-const output = document.querySelector('#item-container');
-const counter = document.querySelector('list-counter');
+const output = document.querySelector('#output');
+const counter = document.querySelector('#list-counter');
+
 
 let todos = [];
 
@@ -21,24 +20,53 @@ fetchTodos();
 
 const listTodos = () => {
   output.innerHTML = ''
-  todos.forEach(todo => {
-    output.appendChild(createTodoElement(todo));
-  })
+
+  for(let i = 0; i <= 10; i++) {
+    todos.forEach(todo => {
+      counter.innerText = [i] + '/10';
+      output.appendChild(createTodoElement(todo));
+    })
+  }
 }
 
 const createTodoElement = todo => {
-  output.innerHTML += `
-  <div id="${todo.id}" class="item-card">
-    <div>
-      <h2>${todo.title}</h2>
-      <p>${todo.body}</p>
-    </div>
-    <div class="check-container">
-      <input type="checkbox" id="item-check">
-      <button class="btn btn-primary btn-list" id="btn-remove">Remove</button>
-    </div>
-  </div>
-  `
+
+  let card = document.createElement('div');
+  card.classList.add('item-card');
+
+  let title = document.createElement('h2');
+  title.innerText = todo.title;
+
+  let checkContainer = document.createElement('div');
+  checkContainer.classList.add('check-container');
+
+  let checkbox = document.createElement('input');
+  checkbox.setAttribute('type', 'checkbox');
+  checkbox.classList.add('item-check');
+
+  let button = document.createElement('button');
+  button.classList.add('btn', 'btn-primary', 'btn-list');
+  button.innerText = 'Remove';
+
+  card.appendChild(title);
+  card.appendChild(checkContainer);
+  checkContainer.appendChild(checkbox);
+  checkContainer.appendChild(button);
+
+
+  checkbox.addEventListener('click', () => {
+    if(checkbox.checked === true) {
+      card.classList.add('item-card-finished');
+      button.classList.add('checkbox-checked');
+    }
+    else {
+      card.classList.remove('item-card-finished');
+      button.classList.remove('checkbox-checked');
+    }
+  })
+
+  button.addEventListener('click', () => removeTodo(todo.id, card))
+  return card;
 }
 
 function removeTodo(id, todo) {
@@ -55,7 +83,6 @@ const createNewTodo = title => {
     body: JSON.stringify({
       id: Date.now().toString(),
       title,
-      body,
       completed: false
     })
   })
@@ -67,7 +94,21 @@ const createNewTodo = title => {
   })
 }
 
+const validateInput = () => {
+  if(input.value === '') {
+    addTodoTitle.classList.add()
+  }
+}
+
+
 form.addEventListener('submit', e => {
   e.preventDefault();
-  validateInput();
+  if(input.value.trim() !== '') {
+    createNewTodo(input.value);
+    input.value = '';
+    input.focus();
+  }
+  // else {
+
+  // }
 })
