@@ -25,7 +25,6 @@ const listTodos = () => {
   for(let i = 0; i <= 10; i++) {
     todos.forEach(todo => {
       counter.innerText = [i] + '/10';
-      console.log([i]);
       output.appendChild(createTodoElement(todo));
     })
   }
