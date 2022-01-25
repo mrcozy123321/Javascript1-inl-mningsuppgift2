@@ -4,6 +4,7 @@ const cardCheck = document.querySelector('.item-check');
 const addBtn = document.querySelector('#btn-add');
 const output = document.querySelector('#output');
 const counter = document.querySelector('#list-counter');
+const invalidInput = document.querySelector('.invalid-input')
 
 
 let todos = [];
@@ -24,6 +25,7 @@ const listTodos = () => {
   for(let i = 0; i <= 10; i++) {
     todos.forEach(todo => {
       counter.innerText = [i] + '/10';
+      console.log([i]);
       output.appendChild(createTodoElement(todo));
     })
   }
@@ -72,6 +74,7 @@ const createTodoElement = todo => {
 function removeTodo(id, todo) {
   todos = todos.filter(todo => todo.id !== id)
   todo.remove()
+  
 }
 
 const createNewTodo = title => {
@@ -107,8 +110,9 @@ form.addEventListener('submit', e => {
     createNewTodo(input.value);
     input.value = '';
     input.focus();
+    invalidInput.classList.remove('is-invalid')
   }
-  // else {
-
-  // }
+  else {
+    invalidInput.classList.add('is-invalid')
+  }
 })

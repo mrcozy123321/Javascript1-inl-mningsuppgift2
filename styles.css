@@ -1,11 +1,12 @@
 :root {
   --primary-color: #1b153f;
-  --secondary-color: #e9967a;
+  --secondary-color: #ddba8d;
   --header-color: #daa520;
-  --card-color: #ddba8d;
+  --card-color: #e9967a;
   --card-color-finished: #8fbc8f;
   --border-radius: .5rem;
 }
+
 * {
   margin: 0;
   padding: 0;
@@ -120,7 +121,7 @@ html, body {
 .invalid-input {
   position: absolute;
   padding: .2rem;
-  bottom: 6.5rem;
+  bottom: 4.5rem;
   left: 4rem;
   background-color: var(--secondary-color);
   color: red;
