@@ -10,7 +10,7 @@ const invalidInput = document.querySelector('.invalid-input')
 let todos = [];
 
 const fetchTodos = async () => {
-  const res = await fetch('https://jsonplaceholder.typicode.com/todos');
+  const res = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=10');
   const data = await res.json();
   todos = data;
 
@@ -22,12 +22,10 @@ fetchTodos();
 const listTodos = () => {
   output.innerHTML = ''
 
-  for(let i = 0; i <= 10; i++) {
-    todos.forEach(todo => {
-      counter.innerText = [i] + '/10';
-      output.appendChild(createTodoElement(todo));
-    })
-  }
+  todos.forEach(todo => {
+    counter.innerText = todos.length + '/10';
+    output.appendChild(createTodoElement(todo));
+  })
 }
 
 const createTodoElement = todo => {
@@ -73,7 +71,8 @@ const createTodoElement = todo => {
 function removeTodo(id, todo) {
   todos = todos.filter(todo => todo.id !== id)
   todo.remove()
-  
+  counter.innerText = todos.length + '/10';
+  console.log(todos);
 }
 
 const createNewTodo = title => {
@@ -90,9 +89,9 @@ const createNewTodo = title => {
   })
   .then(res => res.json())
   .then(data => {
-    console.log(data);
     todos.unshift(data);
     output.prepend(createTodoElement(data));
+    counter.innerText = todos.length + '/10';
   })
 }
 
@@ -105,13 +104,19 @@ const validateInput = () => {
 
 form.addEventListener('submit', e => {
   e.preventDefault();
-  if(input.value.trim() !== '') {
+  if(input.value.trim() === '') {
+    invalidInput.classList.add('is-invalid');
+    invalidInput.innerText = 'You have to enter a title';
+
+  }
+  else if(input.value.trim() !== '' && todos.length === 10) {
+    invalidInput.classList.add('is-invalid');
+    invalidInput.innerText = 'Remove a todo first';
+  }
+  else {
     createNewTodo(input.value);
     input.value = '';
     input.focus();
-    invalidInput.classList.remove('is-invalid')
-  }
-  else {
-    invalidInput.classList.add('is-invalid')
+    invalidInput.classList.remove('is-invalid');
   }
 })
